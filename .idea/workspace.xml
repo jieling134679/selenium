@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1593a5d4-5964-4ea0-a828-c0289ab413ae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selenim开发笔记.docx" beforeDir="false" afterPath="$PROJECT_DIR$/selenim开发笔记.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webauto.py" beforeDir="false" afterPath="$PROJECT_DIR$/webauto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python笔记.docx" beforeDir="false" afterPath="$PROJECT_DIR$/python笔记.docx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/baidu.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -157,6 +155,7 @@
       <workItem from="1610637705017" duration="2123000" />
       <workItem from="1610780285914" duration="6723000" />
       <workItem from="1610882726871" duration="7947000" />
+      <workItem from="1610984403641" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="pycharm">
       <created>1610787790670</created>
@@ -169,13 +168,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16793000" />
+    <option name="totallyTimeSpent" value="17121000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.2563966" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.25906184" />
       <window_info id="Structure" order="1" sideWeight="0.50161815" side_tool="true" weight="0.25266525" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -223,7 +222,7 @@
     <entry file="file://$PROJECT_DIR$/baidu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
