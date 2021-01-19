@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1593a5d4-5964-4ea0-a828-c0289ab413ae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/python笔记.docx" beforeDir="false" afterPath="$PROJECT_DIR$/python笔记.docx" afterDir="false" />
-    </list>
+    <list default="true" id="1593a5d4-5964-4ea0-a828-c0289ab413ae" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +153,7 @@
       <workItem from="1610637705017" duration="2123000" />
       <workItem from="1610780285914" duration="6723000" />
       <workItem from="1610882726871" duration="7947000" />
-      <workItem from="1610984403641" duration="328000" />
+      <workItem from="1610984403641" duration="579000" />
     </task>
     <task id="LOCAL-00001" summary="pycharm">
       <created>1610787790670</created>
@@ -168,7 +166,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17121000" />
+    <option name="totallyTimeSpent" value="17372000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
