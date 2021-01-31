@@ -1,1 +1,32 @@
 python开发excel
+
+pip install xlrd==1.2.0安装xlrd组件
+
+对应整个文件叫book，对应一个页签叫sheet
+
+print("包含表单数量 " + str(book.nsheets))   #打印有多少个sheet
+print(book.sheet_names())   #打印sheet名，装载数组里
+
+获取页签sheet的方式：
+1.通过索引，第一张表单是0： sheet = book.sheet_by_index(0)
+2.通过sheet名：sheet = book.sheet_by_name('2018')
+
+
+获取表格sheet中的信息:
+1.获取表格有多少行：sheet.nrows
+2.获取表单名字：sheet.name
+3.获取表单索引：sheet.number
+4.获取表单列数：sheet.ncols
+
+获取单元格内容：sheet.cell_value(1, 1)
+
+
+可以用for循环+cell_value(0,n)遍历第0行，第n列的所有值
+使用row_values获取某一行的所有值，存放在一个list中返回：print(sheet.row_values(10))
+使用col_values获取某一列的所有值，存放在一个list中返回：print(sheet.col_values(1))    
+def col_values(self, colx, start_rowx=0, end_rowx=None)可以送start_rowx从第几行开始，end_rowx截止第几行且不包含这一行获取行范围：col_values(0, 3, 5)获取第1列第4行到第6行
+
+list = sheet.col_values(0)
+获取某一行
+for a,b in enumerate(list):
+    print(str(a) + str(b))
