@@ -1,0 +1,133 @@
+#--------------------------------------------------socket编程
+TCP/IP协议进行通讯分为客户端和服务端
+
+服务端程序：
+
+# 导入socket库
+from socket import *
+
+# 主机地址为0.0.0.0，表示绑定本机所有网络接口IP地址
+# 等待客户端来连接
+IP = '0.0.0.0'
+
+#端口号
+PORT = 50000
+#定义一次从socket缓冲区最多读入512字节的数据（一次读取缓存里面的最大数量）
+BUFLEN = 512
+
+#实例化一个socket对象，指定IP协议和TCP协议。listenSocket用于等待socket连接
+#参数AF_INET表示该socket网络层使用IP协议
+#参数SCK_STREAM表示该socket传输层使用TCP协议
+listenSocket = socket(AF_INET, SOCK_STREAM)
+
+#socket绑定地址和端口，注意是一个元组
+listenSocket.bind((IP, PORT))
+
+#使socket处于监听转台，等待客户端的连接请求
+#参数5表示：最多接受多少个等待连接的客户端；还没连接上，等待连接的客户端
+listenSocket.listen(5)
+print(f'服务端启动成功，在{PORT}端口等待客户端连接...')
+
+#当有客户端来连接时，接受客户端的连接;这一步会让程序进入阻塞状态，不会继续执行代码，直到有新的连接过来
+#返回一个元组，包含两个变量，用两个变量来接收
+#第一个变量是产生的一个新的socket，用来传输数据，用来接收和发送信息；注意，监听的listenSocket和数据通讯用的dataSocket不是一个socket
+dataSocket, addr = listenSocket.accept()
+print('接受一个客户端的连接', addr)
+
+while True:
+    #尝试读取对方发送的信息
+	#BUFLEN指定从接收缓冲里最多读取多少个字节
+	#recv()方法也是阻塞式的，会停在这一步不断等待，直到客户端有信息发过来
+	recved = dataSocket.recv(BUFLEN)
+	
+	#如果对方直接关闭连接，会返回空bytes，表示对方关闭了连接
+	#退出循环，结束消息收发、
+	if not recved:
+	    break
+	
+	#读取的字节是bytes类型，需要解码为字符串(默认UTF-8)，发送的数据也可能不是字符串，比如音频视频数据
+	info = recved.decode()
+	print(f'收到对方信息：{info}')
+
+	#回送客户端，发送的数据必须是bytes，所以要编码
+	dataSocket.send(f"服务端接收到了信息： {info}".encode())
+	
+#服务端调用close()关闭socket
+dataSocket.close()
+listenSocket.close()
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+客户端程序：
+from socket import *
+
+IP = '127.0.0.1'
+SERVER_PORT = 50000
+BUFLEN = 1024
+
+#实例化一个socket对象
+dataSocket = socket(AF_INET, SOCK_STREAM)
+
+#连接服务端的socket
+dataSocket.connect((IP, SERVER_PORT))
+
+while True:
+    # 从终端读入客户输入的字符串
+	toSend = input('>> ')
+	if toSend == "":
+	    break
+    
+	#发送消息，也要编码为bytes
+	dataSocket.send(toSend.encode())
+	
+	#等待接收服务端的消息
+	recved = dataSocket.recv(BUFLEN)
+	#如果对方返回空bytes，表示对方关闭了连接
+	if not recved:
+	    break
+	#打印读取的信息
+	print(recved.decode())
+	
+dataSocket.close()
+
+
+#----------------------------------------------------------------------------------------------字符集
+字符在python内部默认用unicode存储，在unicode中，所有的字符长度相同，故用len()中文和英文数字长度一致
+在求UTF-8长度时需要先把unicode编码为UTF-8再求长度  string.encode("utf-8")
+
+
+#----------------------------------------------------------------------------------------------文件读写
+首先通过open函数打开文件，open函数返回文件对象
+open()的几个参数：
+file: 路径   
+mode: 指定打开文件的模式   r只读   w只写文本，清空文件内容从头开始写，如果没文件会新建文件  a追加文本模式打开，默认为r
+encoding:指定读写文件的字符编解码，默认使用操作系统默认设置的字符集，windows默认为gbk
+
+
+写文件：
+#指定编码方式为utf-8
+f = open('tmp.txt', 'w', encoding='utf-8')
+
+#write方法会将字符串编码为utf-8字节川写入文件
+f.write('中文')
+
+#close()关闭文件对象
+f.close()
+
+读文件：
+#指定编码方式为utf-8
+f = open('tmp.txt', 'r', encoding='utf-8')
+
+#read方法会在读文件中的原始字节串后，根据上面指定的utf-8解码为字符串对象返回
+content = f.read()
+
+f.close()
+#--------------------------
+#一次只读取3个字符，文件指针会移动到已经读完了的地方
+tmp = f.read(3)
+
+#readlines方法，返回一个列表，列表的每个元素依次对应文件的一行
+linelist = f.readlines()
+f.close()
+for line in linelist:
+    print(line)
