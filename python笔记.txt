@@ -197,6 +197,29 @@ while True:
 dataSocket.close()
 
 
-----------------------------------------------
+#----------------------------------------------
+文件和目录操作
+#创建目录：os.makedirs可以递归的创建目录结构
+import os
+os.makedirs('tmp/python/fileop', exist_ok=True)  #exist_ok=True表示如果创建的某个目录已经存在，也不报错
 
+
+#-----------
+import os 
+
+#目标目录
+targetDir = r'h:\arch\content'
+files = []
+dirs = []
+
+#下面三个变量dirpath, dirnames, filenames
+#dirpath 代表当前遍历到的目录名
+#dirnames 是列表对象，存放当前dirpath中的所有子目录名
+#filenames 是列表对象，存放当前dirpath中所有文件名
+for (dirpath, dirnames, filenames) in os.walk(targetDir):
+    files += filenames
+	dirs += dirnames
+	
+print(files)
+print(dirs)
 
