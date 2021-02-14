@@ -30,3 +30,6 @@ list = sheet.col_values(0)
 获取某一行
 for a,b in enumerate(list):
     print(str(a) + str(b))
+	
+
+python写入excel使用组件openpyxl
