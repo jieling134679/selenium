@@ -72,12 +72,31 @@ def pressHorn():              #类的方法
     print(‘didi’)
 
 实例属性通常在类的初始化方法__init__中定义，类在初始化时，解释器会去执行
+
 def __init__(self):
 self.color = “red”
 self.engine = “612485”
-当调用初始化方法实例化对象时，解释器首先会在内存中创建一个类的实例对象，解释器就把这个对象本身作为参数传递进变量self中
+@ 当调用初始化方法实例化对象时，解释器首先会在内存中创建一个类的实例对象，解释器就把这个对象本身作为参数传递进变量self中
+@ 在实例化对象时，解释器会自动执行__init__(self)方法
 
-异常捕获：
+实例可以访问类的属性，类不能访问实例的属性
+
+实例的属性通常是作为参数传递进__init__()方法，例如：
+class Car：
+brand = 'Benz'
+
+def __init__(self, color, engineSN):
+    self.color = color
+	self.engineSN = engineSN
+	
+# 第一个参数self由解释器默认传进去	
+car1 = Car('white', 'SN58372')
+car2 = Car('black', 'SN84268')
+
+# 注意！！！实例方法的第一个参数始终是self
+	
+
+#---------------------异常捕获：
 try:
     ….
 except XXXError:
@@ -222,4 +241,8 @@ for (dirpath, dirnames, filenames) in os.walk(targetDir):
 	
 print(files)
 print(dirs)
+
+#---------------------字符集
+字符集就是数字和字符的映射集合
+
 
