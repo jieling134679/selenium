@@ -94,6 +94,77 @@ car1 = Car('white', 'SN58372')
 car2 = Car('black', 'SN84268')
 
 # 注意！！！实例方法的第一个参数始终是self
+
+实例方法定义时，第一个参数必为self
+def read(self, book):
+
+在实例调用自己的实例方法时，调用方法的实例本身就作为第一参数传递了进去：
+xiaoming.read('mathbook') #xiaoming作为实参传给了self，'mathbook作为实参传给了book'
+
+类的静态方法不能访问实例属性
+
+#----------------------------------------------类的继承
+class Car:
+    XXX
+    XXX
+    def __init__(self):
+       XXX
+
+#定义BenzCar继承Car
+class BenzCar2018(BenzCar):
+    price = '880000'
+    model = 'Benz2018'
+
+    def __init__(self, color, engineSN, weight, oilweight):
+        # 子类的初始化方法需要先调用父类的初始化方法
+        # 个人理解：
+        # 这里BenzCar2018的对象也是BenzCar的对象，所以可以调用父类Benz的__init__方法，由于还传入两个其他的参数，所以还需要进行两次赋值
+        BenzCar.__init__(self, color, engineSN)
+        # 或者用这种方法进行初始化，推荐用super()
+        super().__init__(color,engineSN)
+        self.weight= weight # 车的重量
+        self.oilweight = 0  # 油的重量
+
+    # 加油
+    def fuel(self, oilweight):
+        self.oilweight += oilAdded
+        self.weight    += oilAdded
+
+# 这里__init__的第一个参数self其实就是car1
+car1 = BenzCar2018('black', 'SN134679', '2t', '500kg')
+
+类的组合关系，即一个类的实例属性里包含另一个类实例
+类的属性可以为其他的对象；对象的属性可以是其他的对象
+
+#---------------------------------------打印异常信息
+Traceback(most recent call last)
+******错误信息按照时间顺序从前到后打印出来，先打印的是最先调用的地方，一直打印到最后报错的那行******
+
+#--------------------------------------Python调用外部应用程序
+python擅长调用其他程序
+
+常见的两种方式：
+1.os库的system函数
+2.subprocess库
+
+import os
+command = r'd:\tools\wget http://mirrors.sohu.com/nginx/nginx-1.13.9.zip'
+os.system(command)
+
+os.system会默认启动一个命令行cmd程序： Python -> 打开CMD ->CMD中执行指令
+但是os.system没法获取输出到CMD的内容
+#-------------
+如果要对输出到屏幕上的内容进行分析，就要使用subprocess模块
+from subprocess import PIPE, Popen
+
+# 第一个参数是要执行的命令；
+# stdout=PIPE：重定向输出，输出不再输出到终端，而是输出到管道中
+# shell=True打开一个CMD，让CMD去执行命令
+proc = Popen('fsutil volume diskfree c:', stdin=None, stdout=PIPE, stderr=None, shell=True)
+
+# communicate 方法返回输出到 标准输出stdout和标准错误stderr 的字节串内容
+# 标准输出设备和标准错误设备都是本终端设备
+outinfo, errinfo = proc.communicate()
 	
 
 #---------------------异常捕获：
