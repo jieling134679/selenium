@@ -1,0 +1,3 @@
+echarts笔记
+
+浏览器提供canvas和svg两种绘图方式，其中canvas不是DOM对象，svg是DOM对象；svg是矢量图支持缩放
